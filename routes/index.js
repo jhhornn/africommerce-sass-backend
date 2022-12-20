@@ -7,6 +7,7 @@ const brandRoute = require('../src/brand/brandRoute')
 const reviewRouter = require('../src/review/reviewRouter')
 const wishlistRouter = require('../src/wishList/wishList')
 const orderRouter = require('../src/order/orderRouter')
+const apiDocsRouter = require('../src/documentation')
 
 // const passport = require('passport')
 
@@ -17,6 +18,7 @@ rootRouter.get('/', function (req, res) {
   res.render('index', { title: 'Express' })
 })
 
+rootRouter.use('/api-docs', apiDocsRouter)
 rootRouter.use('/users', userRoute)
 rootRouter.use('/products', productRoute)
 rootRouter.use('/business', businessRouter)

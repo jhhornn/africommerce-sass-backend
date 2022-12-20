@@ -1,0 +1,1519 @@
+openapi: 3.0.0
+info:
+  title: Africommerce SaaS Backend
+  contact: {}
+  version: '1.0'
+servers:
+  - url: https://africommerce.cyclic.app
+  - url: http://localhost:3000
+    variables: {}
+paths:
+  /users/update_password:
+    put:
+      tags:
+        - User endpoints
+      summary: Update user password
+      description: To update a user's password, send a `PUT` request to the above named route with payload as described below
+      operationId: Updateuserpassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/UpdateuserpasswordRequest'
+                - example:
+                    password: aMoreSecurePassword0!
+            example:
+              password: aMoreSecurePassword0!
+        required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '346'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"15a-Hy0qq7KUzHJkVjeL50yTVLohf/8"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 19:46:05 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Updateuserpassword-example'
+                  - example:
+                      msg: User updated Successfully
+                      data:
+                        _id: 63864e9bf4444317f6259105
+                        username: johnnydoe
+                        firstname: John
+                        lastname: Doe
+                        email: johndoe@mail.com
+                        email_confirmed: false
+                        phonenumber: '08066666666'
+                        address: ''
+                        usertype: user
+                        admin: false
+                        createdAt: 2022-11-29T18:25:31.903Z
+                        updatedAt: 2022-11-29T19:46:05.500Z
+                        __v: 0
+              example:
+                msg: User updated Successfully
+                data:
+                  _id: 63864e9bf4444317f6259105
+                  username: johnnydoe
+                  firstname: John
+                  lastname: Doe
+                  email: johndoe@mail.com
+                  email_confirmed: false
+                  phonenumber: '08066666666'
+                  address: ''
+                  usertype: user
+                  admin: false
+                  createdAt: 2022-11-29T18:25:31.903Z
+                  updatedAt: 2022-11-29T19:46:05.500Z
+                  __v: 0
+      deprecated: false
+  /users/logout:
+    get:
+      tags:
+        - User endpoints
+      summary: Logout user
+      description: To log out a user, send a `GET` request to the above named route
+      operationId: Logoutuser
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Set-Cookie:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: jwt_token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '45'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"2d-kwSjk2vDTnxknSpABGMbMpNTwmc"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 19:37:06 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Logoutuser-example'
+                  - example:
+                      status: true
+                      message: logout successful
+              example:
+                status: true
+                message: logout successful
+      deprecated: false
+  /users:
+    get:
+      tags:
+        - User endpoints
+      summary: View users
+      description: To view all users, send a `GET` request to the above named route
+      operationId: Viewusers
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '1262'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"4ee-KqVnZxJb8yvM/hss4dyULfgZ6UM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 20:13:15 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Viewusers-example'
+                  - example:
+                      msg: all users
+                      data:
+                        - _id: 63864e9bf4444317f6259105
+                          username: johnnydoe
+                          firstname: John
+                          lastname: Doe
+                          email: johndoe@mail.com
+                          email_confirmed: false
+                          phonenumber: '08066666666'
+                          address: ''
+                          usertype: user
+                          admin: false
+                          createdAt: 2022-11-29T18:25:31.903Z
+                          updatedAt: 2022-11-29T19:54:16.246Z
+                          __v: 0
+                        - _id: 638662164c67ffb62e6ade13
+                          username: janefoster
+                          firstname: Jane
+                          lastname: Foster
+                          email: janefoster@mail.com
+                          email_confirmed: false
+                          phonenumber: '08066666666'
+                          address: ''
+                          usertype: user
+                          admin: false
+                          createdAt: 2022-11-29T19:48:38.132Z
+                          updatedAt: 2022-11-29T19:48:38.132Z
+                          __v: 0
+                        - _id: 638662324c67ffb62e6ade17
+                          username: thor
+                          firstname: Thor
+                          lastname: Odison
+                          email: thor@mail.asguard
+                          email_confirmed: false
+                          phonenumber: '08066666666'
+                          address: ''
+                          usertype: user
+                          admin: false
+                          createdAt: 2022-11-29T19:49:06.715Z
+                          updatedAt: 2022-11-29T19:49:06.715Z
+                          __v: 0
+                        - _id: 6386627c4c67ffb62e6ade1b
+                          username: shegz
+                          firstname: Shegz
+                          lastname: Okoro
+                          email: therealshegz@supastrikas.mail
+                          email_confirmed: false
+                          phonenumber: '08066666666'
+                          address: ''
+                          usertype: user
+                          admin: false
+                          createdAt: 2022-11-29T19:50:20.783Z
+                          updatedAt: 2022-11-29T19:50:20.783Z
+                          __v: 0
+              example:
+                msg: all users
+                data:
+                  - _id: 63864e9bf4444317f6259105
+                    username: johnnydoe
+                    firstname: John
+                    lastname: Doe
+                    email: johndoe@mail.com
+                    email_confirmed: false
+                    phonenumber: '08066666666'
+                    address: ''
+                    usertype: user
+                    admin: false
+                    createdAt: 2022-11-29T18:25:31.903Z
+                    updatedAt: 2022-11-29T19:54:16.246Z
+                    __v: 0
+                  - _id: 638662164c67ffb62e6ade13
+                    username: janefoster
+                    firstname: Jane
+                    lastname: Foster
+                    email: janefoster@mail.com
+                    email_confirmed: false
+                    phonenumber: '08066666666'
+                    address: ''
+                    usertype: user
+                    admin: false
+                    createdAt: 2022-11-29T19:48:38.132Z
+                    updatedAt: 2022-11-29T19:48:38.132Z
+                    __v: 0
+                  - _id: 638662324c67ffb62e6ade17
+                    username: thor
+                    firstname: Thor
+                    lastname: Odison
+                    email: thor@mail.asguard
+                    email_confirmed: false
+                    phonenumber: '08066666666'
+                    address: ''
+                    usertype: user
+                    admin: false
+                    createdAt: 2022-11-29T19:49:06.715Z
+                    updatedAt: 2022-11-29T19:49:06.715Z
+                    __v: 0
+                  - _id: 6386627c4c67ffb62e6ade1b
+                    username: shegz
+                    firstname: Shegz
+                    lastname: Okoro
+                    email: therealshegz@supastrikas.mail
+                    email_confirmed: false
+                    phonenumber: '08066666666'
+                    address: ''
+                    usertype: user
+                    admin: false
+                    createdAt: 2022-11-29T19:50:20.783Z
+                    updatedAt: 2022-11-29T19:50:20.783Z
+                    __v: 0
+      deprecated: false
+  /users/<userId>:
+    get:
+      tags:
+        - User endpoints
+      summary: View specific user
+      description: >-
+        To view a specific user, send a `GET` request to the above named route
+
+
+        Replace `userId` with the ID of the user
+      operationId: Viewspecificuser
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '303'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"12f-heKAyWoPOGxLUsXfkJJtOsSKsIM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 21:21:16 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/users63864e9bf4444317f6259105-Viewspecificuser'
+                  - example:
+                      _id: 63864e9bf4444317f6259105
+                      username: johnnydoe
+                      firstname: John
+                      lastname: Doe
+                      email: johndoe@mail.com
+                      email_confirmed: false
+                      phonenumber: '08066666666'
+                      address: ''
+                      usertype: user
+                      admin: false
+                      createdAt: 2022-11-29T18:25:31.903Z
+                      updatedAt: 2022-11-29T19:54:16.246Z
+                      __v: 0
+              example:
+                _id: 63864e9bf4444317f6259105
+                username: johnnydoe
+                firstname: John
+                lastname: Doe
+                email: johndoe@mail.com
+                email_confirmed: false
+                phonenumber: '08066666666'
+                address: ''
+                usertype: user
+                admin: false
+                createdAt: 2022-11-29T18:25:31.903Z
+                updatedAt: 2022-11-29T19:54:16.246Z
+                __v: 0
+      deprecated: false
+    put:
+      tags:
+        - User endpoints
+      summary: Update specific user
+      description: >-
+        To update a specific user, send a `PUT` request to the above named route with payload as described below
+
+
+        Replace `userId` with the ID of the user
+      operationId: Updatespecificuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/UpdatespecificuserRequest'
+                - example:
+                    firstname: John
+                    lastname: Trabaye
+                    email: johntrabaye@mail.com
+                    username: johnyyt
+            example:
+              firstname: John
+              lastname: Trabaye
+              email: johntrabaye@mail.com
+              username: johnyyt
+        required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '352'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"160-a/IhBeJvvH/vsa4/YY9ih31CLyU"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 21:22:22 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Updatespecificuser'
+                  - example:
+                      msg: User updated Successfully
+                      data:
+                        _id: 63864e9bf4444317f6259105
+                        username: johnyyt
+                        firstname: John
+                        lastname: Trabaye
+                        email: johntrabaye@mail.com
+                        email_confirmed: false
+                        phonenumber: '08066666666'
+                        address: ''
+                        usertype: user
+                        admin: false
+                        createdAt: 2022-11-29T18:25:31.903Z
+                        updatedAt: 2022-11-29T21:22:22.555Z
+                        __v: 0
+              example:
+                msg: User updated Successfully
+                data:
+                  _id: 63864e9bf4444317f6259105
+                  username: johnyyt
+                  firstname: John
+                  lastname: Trabaye
+                  email: johntrabaye@mail.com
+                  email_confirmed: false
+                  phonenumber: '08066666666'
+                  address: ''
+                  usertype: user
+                  admin: false
+                  createdAt: 2022-11-29T18:25:31.903Z
+                  updatedAt: 2022-11-29T21:22:22.555Z
+                  __v: 0
+      deprecated: false
+    delete:
+      tags:
+        - User endpoints
+      summary: Delete a specific user
+      description: >-
+        To delete a specific user, send a `DELETE` request to the above named route
+
+
+        Replace `userId` with the ID of the user
+      operationId: Deleteaspecificuser
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '48'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"30-grBVgtrky1VGNBcUpJNycbPFWlk"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 20:12:57 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Deleteaspecificuser'
+                  - example:
+                      status: 200
+                      msg: User updated Successfully
+              example:
+                status: 200
+                msg: User updated Successfully
+      deprecated: false
+  /users/sellers:
+    get:
+      tags:
+        - User endpoints
+      summary: View sellers
+      description: To view sellers, send a `GET` request to the above named route
+      operationId: Viewsellers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/sellers/sellerId:
+    get:
+      tags:
+        - User endpoints
+      summary: View specific seller
+      description: >-
+        To view a specific seller, send a `GET` request to the above named route
+
+
+        Replace `sellerId` with the ID of the seller
+      operationId: Viewspecificseller
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/signup:
+    post:
+      tags:
+        - Register & Login
+      summary: Register a new user
+      description: >-
+        You can register a new user by issuing an HTTP `POST` request to the endpoint specified above
+
+
+        **Method:** POST
+
+
+        **Content-Type:** application/json | application/x-www-form-urlencoded
+
+
+        **Request Body Payload**
+
+
+        | Property Name | Type | Description |
+
+        | --- | --- | --- |
+
+        | username | string | The username to be registered. Must be unique |
+
+        | firstname | string | The user's first name |
+
+        | lastname | string | The user's last name |
+
+        | email | string (email) | A valid email address for the user |
+
+        | password | string | The user's password |
+
+        | phonenumber | string | The user's phone number |
+      operationId: Registeranewuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/RegisteranewuserRequest'
+                - example:
+                    username: December
+                    firstname: Oluwadare
+                    lastname: Etim
+                    email: lekid50555@randrai.com
+                    password: Password0!
+                    phonenumber: '08066666666'
+            example:
+              username: December
+              firstname: Oluwadare
+              lastname: Etim
+              email: lekid50555@randrai.com
+              password: Password0!
+              phonenumber: '08066666666'
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '345'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"159-NxE6O8fE6cKLkGneUklaVO52GXQ"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 18:25:32 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Origin
+            vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Origin
+            etag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"167-Z/+UOf5MJOudx1BqxqUacuy7YO0"
+            Apigw-Requestid:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: dbOMjjYYSQ0EQOw=
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/userssignup-Createauser'
+                  - example:
+                      msg: Registration successful!
+                      user:
+                        username: janefoster
+                        firstname: Jane
+                        lastname: Foster
+                        email: janefoster@mail.com
+                        email_confirmed: false
+                        phonenumber: '08066666666'
+                        address: ''
+                        usertype: user
+                        admin: false
+                        _id: 63864e9bf4444317f6259105
+                        createdAt: 2022-11-29T18:25:31.903Z
+                        updatedAt: 2022-11-29T18:25:31.903Z
+                        __v: 0
+              example:
+                msg: Registration successful!
+                user:
+                  username: janefoster
+                  firstname: Jane
+                  lastname: Foster
+                  email: janefoster@mail.com
+                  email_confirmed: false
+                  phonenumber: '08066666666'
+                  address: ''
+                  usertype: user
+                  admin: false
+                  _id: 63864e9bf4444317f6259105
+                  createdAt: 2022-11-29T18:25:31.903Z
+                  updatedAt: 2022-11-29T18:25:31.903Z
+                  __v: 0
+      deprecated: false
+      security: []
+  /users/loginuser:
+    post:
+      tags:
+        - Register & Login
+      summary: Login user
+      description: >-
+        To log a user in, send a `POST` request to the above named endpoint with the example payload.
+
+
+        Identity can be either the user's `username` or `email`
+      operationId: Loginuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/LoginuserRequest'
+                - example:
+                    identity: shegz
+                    password: Password0!
+            example:
+              identity: shegz
+              password: Password0!
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Express
+            Set-Cookie:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: jwt_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2NGU5YmY0NDQ0MzE3ZjYyNTkxMDUiLCJpYXQiOjE2Njk3NDY1MTYsImV4cCI6MTY2OTc1MDExNn0.3XGzHFbVrw4wIIEIKJxmtjRNaIM2hkUs6BcY-X-Y5Ls; Path=/; HttpOnly
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '26'
+            ETag:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: W/"1a-IecQ30fhMfiSsu6eq3fpJneKtRM"
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 29 Nov 2022 18:28:36 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: keep-alive
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: timeout=5
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Origin
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Loginuser-example'
+                  - example:
+                      msg: Login successful
+              example:
+                msg: Login successful
+      deprecated: false
+      security: []
+components:
+  schemas:
+    RegisteranewuserRequest:
+      title: RegisteranewuserRequest
+      required:
+        - username
+        - firstname
+        - lastname
+        - email
+        - password
+        - phonenumber
+      type: object
+      properties:
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phonenumber:
+          type: string
+      example:
+        username: December
+        firstname: Oluwadare
+        lastname: Etim
+        email: lekid50555@randrai.com
+        password: Password0!
+        phonenumber: '08066666666'
+    userssignup-Createauser:
+      title: userssignup-Createauser
+      required:
+        - msg
+        - user
+      type: object
+      properties:
+        msg:
+          type: string
+        user:
+          allOf:
+            - $ref: '#/components/schemas/User'
+            - {}
+      example:
+        msg: Registration successful!
+        user:
+          username: janefoster
+          firstname: Jane
+          lastname: Foster
+          email: janefoster@mail.com
+          email_confirmed: false
+          phonenumber: '08066666666'
+          address: ''
+          usertype: user
+          admin: false
+          _id: 63864e9bf4444317f6259105
+          createdAt: 2022-11-29T18:25:31.903Z
+          updatedAt: 2022-11-29T18:25:31.903Z
+          __v: 0
+    User:
+      title: User
+      required:
+        - username
+        - firstname
+        - lastname
+        - email
+        - email_confirmed
+        - phonenumber
+        - address
+        - usertype
+        - admin
+        - _id
+        - createdAt
+        - updatedAt
+        - __v
+      type: object
+      properties:
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        email_confirmed:
+          type: boolean
+        phonenumber:
+          type: string
+        address:
+          type: string
+        usertype:
+          type: string
+        admin:
+          type: boolean
+        _id:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+          format: int32
+      example:
+        username: janefoster
+        firstname: Jane
+        lastname: Foster
+        email: janefoster@mail.com
+        email_confirmed: false
+        phonenumber: '08066666666'
+        address: ''
+        usertype: user
+        admin: false
+        _id: 63864e9bf4444317f6259105
+        createdAt: 2022-11-29T18:25:31.903Z
+        updatedAt: 2022-11-29T18:25:31.903Z
+        __v: 0
+    Registeranewuser-Development:
+      title: Registeranewuser-Development
+      required:
+        - msg
+        - user
+      type: object
+      properties:
+        msg:
+          type: string
+        user:
+          allOf:
+            - $ref: '#/components/schemas/User1'
+            - {}
+      example:
+        msg: Registration successful!
+        user:
+          username: December
+          firstname: Oluwadare
+          lastname: Etim
+          email: lekid50555@randrai.com
+          email_is_confirmed: false
+          phonenumber: '08066666666'
+          address: ''
+          usertype: user
+          admin: false
+          isVerified: false
+          _id: 63a129c8ef032921a34d15f9
+          createdAt: 2022-12-20T03:19:36.611Z
+          updatedAt: 2022-12-20T03:19:36.611Z
+          __v: 0
+    User1:
+      title: User1
+      required:
+        - username
+        - firstname
+        - lastname
+        - email
+        - email_is_confirmed
+        - phonenumber
+        - address
+        - usertype
+        - admin
+        - isVerified
+        - _id
+        - createdAt
+        - updatedAt
+        - __v
+      type: object
+      properties:
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        email_is_confirmed:
+          type: boolean
+        phonenumber:
+          type: string
+        address:
+          type: string
+        usertype:
+          type: string
+        admin:
+          type: boolean
+        isVerified:
+          type: boolean
+        _id:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+          format: int32
+      example:
+        username: December
+        firstname: Oluwadare
+        lastname: Etim
+        email: lekid50555@randrai.com
+        email_is_confirmed: false
+        phonenumber: '08066666666'
+        address: ''
+        usertype: user
+        admin: false
+        isVerified: false
+        _id: 63a129c8ef032921a34d15f9
+        createdAt: 2022-12-20T03:19:36.611Z
+        updatedAt: 2022-12-20T03:19:36.611Z
+        __v: 0
+    Registeranewuser-Production:
+      title: Registeranewuser-Production
+      required:
+        - msg
+        - user
+      type: object
+      properties:
+        msg:
+          type: string
+        user:
+          allOf:
+            - $ref: '#/components/schemas/User2'
+            - {}
+      example:
+        msg: Registration successful!
+        user:
+          username: December
+          firstname: Oluwadare
+          lastname: Etim
+          email: lekid50555@randrai.com
+          email_is_confirmed: false
+          phonenumber: '08066666666'
+          address: ''
+          usertype: user
+          admin: false
+          _id: 63a12a578e9a664cf43ada02
+          createdAt: 2022-12-20T03:21:59.431Z
+          updatedAt: 2022-12-20T03:21:59.431Z
+          __v: 0
+    User2:
+      title: User2
+      required:
+        - username
+        - firstname
+        - lastname
+        - email
+        - email_is_confirmed
+        - phonenumber
+        - address
+        - usertype
+        - admin
+        - _id
+        - createdAt
+        - updatedAt
+        - __v
+      type: object
+      properties:
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        email_is_confirmed:
+          type: boolean
+        phonenumber:
+          type: string
+        address:
+          type: string
+        usertype:
+          type: string
+        admin:
+          type: boolean
+        _id:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+          format: int32
+      example:
+        username: December
+        firstname: Oluwadare
+        lastname: Etim
+        email: lekid50555@randrai.com
+        email_is_confirmed: false
+        phonenumber: '08066666666'
+        address: ''
+        usertype: user
+        admin: false
+        _id: 63a12a578e9a664cf43ada02
+        createdAt: 2022-12-20T03:21:59.431Z
+        updatedAt: 2022-12-20T03:21:59.431Z
+        __v: 0
+    LoginuserRequest:
+      title: LoginuserRequest
+      required:
+        - identity
+        - password
+      type: object
+      properties:
+        identity:
+          type: string
+        password:
+          type: string
+      example:
+        identity: shegz
+        password: Password0!
+    Loginuser-example:
+      title: Loginuser-example
+      required:
+        - msg
+      type: object
+      properties:
+        msg:
+          type: string
+      example:
+        msg: Login successful
+    Loginuser-Development:
+      title: Loginuser-Development
+      required:
+        - msg
+      type: object
+      properties:
+        msg:
+          type: string
+      example:
+        msg: Login successful
+    UpdateuserpasswordRequest:
+      title: UpdateuserpasswordRequest
+      required:
+        - password
+      type: object
+      properties:
+        password:
+          type: string
+      example:
+        password: aMoreSecurePassword0!
+    Updateuserpassword-example:
+      title: Updateuserpassword-example
+      required:
+        - msg
+        - data
+      type: object
+      properties:
+        msg:
+          type: string
+        data:
+          allOf:
+            - $ref: '#/components/schemas/Data'
+            - {}
+      example:
+        msg: User updated Successfully
+        data:
+          _id: 63864e9bf4444317f6259105
+          username: johnnydoe
+          firstname: John
+          lastname: Doe
+          email: johndoe@mail.com
+          email_confirmed: false
+          phonenumber: '08066666666'
+          address: ''
+          usertype: user
+          admin: false
+          createdAt: 2022-11-29T18:25:31.903Z
+          updatedAt: 2022-11-29T19:46:05.500Z
+          __v: 0
+    Data:
+      title: Data
+      required:
+        - _id
+        - username
+        - firstname
+        - lastname
+        - email
+        - email_confirmed
+        - phonenumber
+        - address
+        - usertype
+        - admin
+        - createdAt
+        - updatedAt
+        - __v
+      type: object
+      properties:
+        _id:
+          type: string
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        email_confirmed:
+          type: boolean
+        phonenumber:
+          type: string
+        address:
+          type: string
+        usertype:
+          type: string
+        admin:
+          type: boolean
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+          format: int32
+      example:
+        _id: 63864e9bf4444317f6259105
+        username: johnnydoe
+        firstname: John
+        lastname: Doe
+        email: johndoe@mail.com
+        email_confirmed: false
+        phonenumber: '08066666666'
+        address: ''
+        usertype: user
+        admin: false
+        createdAt: 2022-11-29T18:25:31.903Z
+        updatedAt: 2022-11-29T19:46:05.500Z
+        __v: 0
+    Logoutuser-example:
+      title: Logoutuser-example
+      required:
+        - status
+        - message
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+      example:
+        status: true
+        message: logout successful
+    Viewusers-example:
+      title: Viewusers-example
+      required:
+        - msg
+        - data
+      type: object
+      properties:
+        msg:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Data'
+          description: ''
+      example:
+        msg: all users
+        data:
+          - _id: 63864e9bf4444317f6259105
+            username: johnnydoe
+            firstname: John
+            lastname: Doe
+            email: johndoe@mail.com
+            email_confirmed: false
+            phonenumber: '08066666666'
+            address: ''
+            usertype: user
+            admin: false
+            createdAt: 2022-11-29T18:25:31.903Z
+            updatedAt: 2022-11-29T19:54:16.246Z
+            __v: 0
+          - _id: 638662164c67ffb62e6ade13
+            username: janefoster
+            firstname: Jane
+            lastname: Foster
+            email: janefoster@mail.com
+            email_confirmed: false
+            phonenumber: '08066666666'
+            address: ''
+            usertype: user
+            admin: false
+            createdAt: 2022-11-29T19:48:38.132Z
+            updatedAt: 2022-11-29T19:48:38.132Z
+            __v: 0
+          - _id: 638662324c67ffb62e6ade17
+            username: thor
+            firstname: Thor
+            lastname: Odison
+            email: thor@mail.asguard
+            email_confirmed: false
+            phonenumber: '08066666666'
+            address: ''
+            usertype: user
+            admin: false
+            createdAt: 2022-11-29T19:49:06.715Z
+            updatedAt: 2022-11-29T19:49:06.715Z
+            __v: 0
+          - _id: 6386627c4c67ffb62e6ade1b
+            username: shegz
+            firstname: Shegz
+            lastname: Okoro
+            email: therealshegz@supastrikas.mail
+            email_confirmed: false
+            phonenumber: '08066666666'
+            address: ''
+            usertype: user
+            admin: false
+            createdAt: 2022-11-29T19:50:20.783Z
+            updatedAt: 2022-11-29T19:50:20.783Z
+            __v: 0
+    users63864e9bf4444317f6259105-Viewspecificuser:
+      title: users63864e9bf4444317f6259105-Viewspecificuser
+      required:
+        - _id
+        - username
+        - firstname
+        - lastname
+        - email
+        - email_confirmed
+        - phonenumber
+        - address
+        - usertype
+        - admin
+        - createdAt
+        - updatedAt
+        - __v
+      type: object
+      properties:
+        _id:
+          type: string
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        email_confirmed:
+          type: boolean
+        phonenumber:
+          type: string
+        address:
+          type: string
+        usertype:
+          type: string
+        admin:
+          type: boolean
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+          format: int32
+      example:
+        _id: 63864e9bf4444317f6259105
+        username: johnnydoe
+        firstname: John
+        lastname: Doe
+        email: johndoe@mail.com
+        email_confirmed: false
+        phonenumber: '08066666666'
+        address: ''
+        usertype: user
+        admin: false
+        createdAt: 2022-11-29T18:25:31.903Z
+        updatedAt: 2022-11-29T19:54:16.246Z
+        __v: 0
+    UpdatespecificuserRequest:
+      title: UpdatespecificuserRequest
+      required:
+        - firstname
+        - lastname
+        - email
+        - username
+      type: object
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+      example:
+        firstname: John
+        lastname: Trabaye
+        email: johntrabaye@mail.com
+        username: johnyyt
+    Updatespecificuser:
+      title: Updatespecificuser
+      required:
+        - msg
+        - data
+      type: object
+      properties:
+        msg:
+          type: string
+        data:
+          allOf:
+            - $ref: '#/components/schemas/Data'
+            - {}
+      example:
+        msg: User updated Successfully
+        data:
+          _id: 63864e9bf4444317f6259105
+          username: johnyyt
+          firstname: John
+          lastname: Trabaye
+          email: johntrabaye@mail.com
+          email_confirmed: false
+          phonenumber: '08066666666'
+          address: ''
+          usertype: user
+          admin: false
+          createdAt: 2022-11-29T18:25:31.903Z
+          updatedAt: 2022-11-29T21:22:22.555Z
+          __v: 0
+    Deleteaspecificuser:
+      title: Deleteaspecificuser
+      required:
+        - status
+        - msg
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        msg:
+          type: string
+      example:
+        status: 200
+        msg: User updated Successfully
+tags:
+  - name: Register & Login
+    description: 'Sign up or log in to the service'
+  - name: User endpoints
+    description: All user related endpoints
